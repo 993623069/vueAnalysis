@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>数据join法：曾几何非常流行，是曾经的前端必会知识</title>
+</head>
+<body>
+	<ul id="uid"></ul>
+	<script type="text/javascript">
+		var list =[
+		     {name:'张三',age:18,sex:'男'},
+		     {name:'里斯',age:17,sex:'女'},
+		     {name:'王二麻子',age:13,sex:'男'}
+		]
+		var uidDom=document.getElementById('uid')
+		for (var i = 0; i < list.length; i++) {
+
+		  uidDom.innerHTML=[
+           '<li>',
+           '   <div>'+list[i].name+'的信息</div>',
+           '    <p>姓名：'+list[i].name+'</p>',
+           '    <p>年龄：'+list[i].age+'</p>',
+           '    <p>性别：'+list[i].sex+'</p>',
+           '</li>'
+		  ].join('')
+		}
+	</script>
+</body>
+</html>

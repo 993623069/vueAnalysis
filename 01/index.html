@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>纯DOM法： 非常笨拙，没有实战价值</title>
+</head>
+<body>
+	<ul id="uid"></ul>
+	<script type="text/javascript">
+		var list =[
+		     {name:'张三',age:18},
+		     {name:'里斯',age:17},
+		     {name:'王二麻子',age:13}
+		]
+debugger
+		var uidDom=document.getElementById('uid')
+		for (var i = 0; i < list.length; i++) {
+		  var li=document.createElement('li')
+		  var div=document.createElement('div')
+		  div.innerText=list[i].name+'基本信息是'
+		  var spam=document.createElement('spam')
+		   spam.innerText='姓名是：'+list[i].name+';'+'年龄是：'+list[i].age
+		  li.appendChild(div)
+		  li.appendChild(spam)
+		  uidDom.appendChild(li)
+		}
+	</script>
+</body>
+</html>
+
