@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+  <div id="app"></div>
+	<script src="/xuni/bundle.js"></script>
+	<script type="text/javascript">
+	//	var template ='我买了一个{{thing}},好{{mood}}啊';
+		var template =`<div class="nihao"> 
+							<ol>
+							{{#students}}
+							   <li>
+							    学生  :  {{name}}    的爱好是
+							      <ol>
+							        {{#hobbies}}
+							         <li>:{{.}}</li>
+							        {{/hobbies}}
+							       </ol>
+							     </li>
+							  {{/students}}
+							  </ol>
+						  </div>`;
+		var data={
+			students:[
+              {'name':'小明','hobbies':['吃饭','睡觉']},
+               {'name':'小红','hobbies':['吃饭','睡觉']},
+                {'name':'小强','hobbies':['吃饭','睡觉']},
+			]
+		}
+
+		const strHtml=TemplateEngine.render(template,data)
+		document.getElementById('app').innerHTML=strHtml
+		console.log(strHtml)
+	</script>
+	
+</body>
+</html>
