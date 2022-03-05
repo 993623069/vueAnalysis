@@ -1,6 +1,6 @@
 
 import patchVnode from './patchVnode'
-
+import createElement  from './createElement.js'
 //判断是否同一个虚拟节点
 function checkSameVnode(a,b){
 	return a.sel === b.sel && a.key === b.key;
@@ -88,7 +88,7 @@ export default function updateChildren(parentElm,oldCh,newCh){
 		                //把这项设置为undefined，表示我已经处理完这项了
 		                oldCh[idxInOld]=undefined;
 		                //移动，调用insertBefore也可以实现移动，
-		                parentElm.insertBefore(elmToMove.elm,oldStartVnode.elm
+		                parentElm.insertBefore(elmToMove.elm,oldStartVnode.elm)
    	    	///	}
    	    	}
    	    	//指针下移，只移动新的头
@@ -98,18 +98,19 @@ export default function updateChildren(parentElm,oldCh,newCh){
    }
    //继续看看有没有剩余的，循环结束了start还是比old小
    if(newStartIdx <= newEndIdx){
-   	console.log('new还有剩余节点没有处理，要加载，要把所有剩余的节点，都要插入到oldStartIdx之前');
-   	//插入的标杆
-   	//const before=newCh(newEndIdx + 1)===null?null:newCh[newEndIdx+1].elm;
-   	//遍历新的newCh,添加到老的没有处理的之前
-   	for(let i=newStartIdx;i<=newEndIdx;i++){
-   		//insertBefore方法可以自动识别null，如果是null就会自动排到队尾去，和appendChild是一致了
-   		//newCh[i]现在还没有真正的DOM，所以要调用createElement()函数变为DOM
-   		parentElm.insertBefore(createElement(newCh[i]),oldCh[oldStartIdx].elm);
-   	}
-   }else if(oldStartIdx <= oldEmdIdx;i++){
-   	//批量删除oldStart和old指针之间的项
-   	for(let i=oldStartIdx;i<=oldEmdIdx;i++){
-   		oldCh[i] && parentElm.removeChild(oldCh[i].elm)
-   	}
+		   	console.log('new还有剩余节点没有处理，要加载，要把所有剩余的节点，都要插入到oldStartIdx之前');
+		   	//插入的标杆
+		   	//const before=newCh(newEndIdx + 1)===null?null:newCh[newEndIdx+1].elm;
+		   	//遍历新的newCh,添加到老的没有处理的之前
+		   	for(let i=newStartIdx;i<=newEndIdx;i++){
+		   		//insertBefore方法可以自动识别null，如果是null就会自动排到队尾去，和appendChild是一致了
+		   		//newCh[i]现在还没有真正的DOM，所以要调用createElement()函数变为DOM
+		   		parentElm.insertBefore(createElement(newCh[i]),oldCh[oldStartIdx].elm);
+		   	}
+   }else if(oldStartIdx <= oldEmdIdx){
+		   	//批量删除oldStart和old指针之间的项
+		   	for(let i=oldStartIdx;i<=oldEmdIdx;i++){
+		   		oldCh[i] && parentElm.removeChild(oldCh[i].elm)
+		   	}
    }
+}
